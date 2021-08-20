@@ -9,16 +9,32 @@ let personalMovieDB = {
     private: false,
 };
 
-function writeYourGenres(genres) {
-    for (let i = 1; i <= 3; i++) {
-    let question = prompt(`Ваш любимый жанр под номером ${i}`, "");
-    personalMovieDB.genres[i - 1] = question;
-}
-}
-console.log (writeYourGenres(personalMovieDB.genres));
-showMyDB();
+let cat = {
+    name: "Tom",
+    legs: 4,
+    wool: "red",
+    head: {
+        knee: 2,
+        eyes: {
+            amount: 2,
+            color: "green",
+        }
+    }
+};
 
-
+for (let key in cat) {
+    if (typeof(cat[key]) === "object") {
+        for (let i in cat[key]) {
+            if (typeof(cat[key][i]) === "object") {
+                for (let q in cat[key][i]) {
+                    console.log(`Свойство ${q} имеет значение ${cat[key][i]}`);
+                }
+            } else
+            console.log(`Свойство ${i} имеет значение ${cat[key][i]}`);
+        }
+    } else
+    console.log(`Свойство ${key} имеет значение ${cat[key]}`);
+}
 
 
 
@@ -59,4 +75,21 @@ function start() {
     while (numberOfFilms == "" || numberOfFilms == null || isNaN(numberOfFilms)) {
         numberOfFilms = +prompt ("Сколько фильмов вы уже посмотрели?", "");
     }
+}
+
+function exampleCallbackFunction (a, callback) {
+    console.log (`Я учу: ${a}`);
+    callback();
+} 
+function jopa() {
+    console.log("Jopaa!!!!");
+}
+
+exampleCallbackFunction(`JavaScript`, jopa);
+
+function writeYourGenres(genres) {
+    for (let i = 1; i <= 3; i++) {
+    let question = prompt(`Ваш любимый жанр под номером ${i}`, "");
+    personalMovieDB.genres[i - 1] = question;
+}
 }
